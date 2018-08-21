@@ -6,10 +6,12 @@
 <table>
     <h2>Department</h2>
     <tr>
+        <th>ID</th>
         <th>First Name</th>
     </tr>
     #foreach($department in $departments)
     <tr>
+        <td>$department.getId()</td>
         <td>$department.getTitle()</td>
     </tr>
     #end
