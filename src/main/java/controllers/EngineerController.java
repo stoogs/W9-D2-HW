@@ -37,6 +37,15 @@ public class EngineerController {
             return new ModelAndView(model, "templates/layout.vtl");
         }, new VelocityTemplateEngine());
 
+        get ("/engineers/:id", (req, res) -> {
+            Map<String, Object> model = new HashMap<>();
+            Integer id = Integer.parseInt(req.params(":id"));
+            Engineer engineerById = DBHelper.find(id, Engineer.class);
+            model.put("template", "templates/engineers/show.vtl");
+            model.put("engineerById", engineerById);
+            return new ModelAndView(model, "templates/layout.vtl");
+        }, new VelocityTemplateEngine());
+
         post ("/engineers", (req, res) -> {
             int departmentId = Integer.parseInt(req.queryParams("department"));
             Department department = DBHelper.find(departmentId, Department.class);

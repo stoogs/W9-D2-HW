@@ -40,6 +40,15 @@ public class ManagerController {
             return new ModelAndView(model, "templates/layout.vtl");
         }, new VelocityTemplateEngine());
 
+        get ("/managers/:id", (req, res) -> {
+            Map<String, Object> model = new HashMap<>();
+            Integer id = Integer.parseInt(req.params(":id"));
+            Manager managerById = DBHelper.find(id, Manager.class);
+            model.put("template", "templates/managers/show.vtl");
+            model.put("managerById", managerById);
+            return new ModelAndView(model, "templates/layout.vtl");
+        }, new VelocityTemplateEngine());
+
         post ("/managers", (req, res) -> {
             int departmentId = Integer.parseInt(req.queryParams("department"));
             Department department = DBHelper.find(departmentId, Department.class);
