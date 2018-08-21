@@ -34,6 +34,7 @@ public class DepartmentController {
             model.put("departments", departments);
             return new ModelAndView(model, "templates/layout.vtl");
         }, new VelocityTemplateEngine());
+
         get ("/departments/new", (req, res) -> {
             Map<String, Object> model = new HashMap<>();
             List<Department> departments = DBHelper.getAll(Department.class);
@@ -43,8 +44,6 @@ public class DepartmentController {
         }, new VelocityTemplateEngine());
 
         post ("/departments", (req, res) -> {
-//            int departmentId = Integer.parseInt(req.queryParams("department"));
-//            Department department = DBHelper.find(departmentId, Department.class);
             String title = req.queryParams("title");
             Department departmentNew = new Department(title);
             DBHelper.save(departmentNew);
