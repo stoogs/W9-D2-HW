@@ -23,9 +23,8 @@ public class EngineerController {
 
         get("/engineers", (req, res) -> {
             Map<String, Object> model = new HashMap<>();
-            model.put("template", "templates/engineers/index.vtl");
-            //TODO Send some engineers over
             List<Engineer> engineers = DBHelper.getAll(Engineer.class);
+            model.put("template", "templates/engineers/index.vtl");
             model.put("engineers", engineers);
             return new ModelAndView(model, "templates/layout.vtl");
         }, new VelocityTemplateEngine());

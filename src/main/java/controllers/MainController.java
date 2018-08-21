@@ -7,5 +7,7 @@ public class MainController {
         Seeds.seedData();
         ManagerController managerController = new ManagerController();
         EmployeeController employeeController = new EmployeeController();
+        EngineerController engineerController = new EngineerController();
+        DepartmentController departmentontroller = new DepartmentController();
     }
 }
